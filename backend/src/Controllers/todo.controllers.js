@@ -36,6 +36,21 @@ exports.updateTodo = asnycHandler(async (req, res) => {
         res.status(404);
         throw new Error('Todo not found');
     }
+    todo.title = req.body.title || todo.title;
+    todo.description = req.body.description || todo.description;
+
+    await todo.save();
+    res.status(200).json(todo);
 })
 
+// Delete a Todo.
+exports.deleteTodo = asnycHandler(async (req, res) => {
+    const todo = await Todo.findById(req.params.id);
+    if (!todo) {
+        res.status(404);
+        throw new Error('Todo not found');
+    }
+    await todo.remove();
+    res.status(200).json({ message : 'Todo removed' });
+})
 

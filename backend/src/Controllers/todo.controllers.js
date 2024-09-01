@@ -20,3 +20,15 @@ exports.getTodos = asnycHandler (async (req, res) => {
 
 })
 
+// Get a single Todo.
+exports.getTodo = asnycHandler(async (req, res) => {
+    const todo = await Todo.findById(req.params.id);
+    if (!todo) {
+       res.status(404);
+       throw new Error('Todo not found');
+    }
+})
+
+// Update a Todo.
+
+

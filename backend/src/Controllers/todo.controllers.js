@@ -3,9 +3,20 @@ const asnycHandler = require('express-async-handler');
 
 // Create or add a new Todo.
 exports.createTodo = asnycHandler(async (req, res) => {
-    const todo = await Todo.create(req.body);
-    res.status(201).json(todo);
+    try {
+        const todo = await Todo.create(req.body);
+        res.status(201).json(todo)
+    }
+    catch {
+        res.status(400);
+        throw new Error('Invalid data');
+    }
 })
 
-// G
+// Get all Todos.
+exports.getTodos = asnycHandler (async (req, res) => {
+    const todos = await Todo.find({});
+    res.status(200).json(todos);
+
+})
 

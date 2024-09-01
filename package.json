@@ -1,0 +1,21 @@
+{
+  "name": "codealpha_to_do_app",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "-TO DO LIST",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Butawantemi/CodeAlpha_To_Do_App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Butawantemi/CodeAlpha_To_Do_App/issues"
+  },
+  "homepage": "https://github.com/Butawantemi/CodeAlpha_To_Do_App#readme"
+}

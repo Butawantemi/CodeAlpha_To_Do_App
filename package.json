@@ -1,11 +1,10 @@
 {
   "name": "codealpha_to_do_app",
   "version": "1.0.0",
-  "type": "module",
   "description": "-TO DO LIST",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "nodemon src/app.js"
   },
   "repository": {
     "type": "git",

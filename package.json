@@ -17,5 +17,10 @@
   "bugs": {
     "url": "https://github.com/Butawantemi/CodeAlpha_To_Do_App/issues"
   },
-  "homepage": "https://github.com/Butawantemi/CodeAlpha_To_Do_App#readme"
+  "homepage": "https://github.com/Butawantemi/CodeAlpha_To_Do_App#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "nodemon": "^3.1.4"
+  }
 }

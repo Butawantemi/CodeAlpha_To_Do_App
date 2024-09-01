@@ -21,9 +21,14 @@ exports.getTodos = asnycHandler (async (req, res) => {
 
 // Get a single Todo.
 exports.getTodo = asnycHandler(async (req, res) => {
-    const todo = await Todo.findById(req.params.id);
-    if (!todo) {
-       res.status(404);
+    try {
+      const todo = await Todo.findById(req.params.id);
+      if (!todo) {
+        return res.status(404).json({ message: 'To-Do not found' });
+      }
+      res.json(todo);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
     }
 })
 
@@ -42,11 +47,14 @@ exports.updateTodo = async (req, res) => {
 
 // Delete a Todo.
 exports.deleteTodo = asnycHandler(async (req, res) => {
-    const todo = await Todo.findById(req.params.id);
-    if (!todo) {
-        res.status(404);
+    try {
+      const deletedTodo = await Todo.findByIdAndDelete(req.params.id);
+      if (!deletedTodo) {
+        return res.status(404).json({ message: 'To-Do not found' });
+      }
+      res.json({ message: 'To-Do deleted successfully' });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
     }
-    await todo.remove();
-    res.status(200).json({ message : 'Todo removed' });
 })
 

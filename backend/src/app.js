@@ -1,5 +1,7 @@
 const express = require('express');
+const cors = require('cors');
 const { dbConnect } = require('./config/dbConnect');
+const  todoRoutes = require('./Routes/todo.routes');
 const app = express();
 port = process.env.PORT || 3000;
 require('dotenv/config');
@@ -9,11 +11,12 @@ dbConnect();
 
 //middleware
 app.use(express.json());
+app.use(cors());
 
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
-})
+// Routes
+app.use('/api/todos', )
 
+// Start the server
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 })

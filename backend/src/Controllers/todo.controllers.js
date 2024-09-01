@@ -9,7 +9,6 @@ exports.createTodo = asnycHandler(async (req, res) => {
     }
     catch {
         res.status(400);
-        throw new Error('Invalid data');
     }
 })
 
@@ -25,7 +24,6 @@ exports.getTodo = asnycHandler(async (req, res) => {
     const todo = await Todo.findById(req.params.id);
     if (!todo) {
        res.status(404);
-       throw new Error('Todo not found');
     }
 })
 
@@ -34,7 +32,6 @@ exports.updateTodo = asnycHandler(async (req, res) => {
     const todo = await Todo.findById(req.params.id);
     if (!todo) {
         res.status(404);
-        throw new Error('Todo not found');
     }
     todo.title = req.body.title || todo.title;
     todo.description = req.body.description || todo.description;
@@ -48,7 +45,6 @@ exports.deleteTodo = asnycHandler(async (req, res) => {
     const todo = await Todo.findById(req.params.id);
     if (!todo) {
         res.status(404);
-        throw new Error('Todo not found');
     }
     await todo.remove();
     res.status(200).json({ message : 'Todo removed' });
